@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import discord
 import asyncio
@@ -7,7 +8,7 @@ import json
 from functools import reduce
 
 
-with open("conf.json") as conf:
+with open(os.path.join(os.path.dirname(__file__), "conf.json")) as conf:
     params = json.load(conf)
 
 token = params["token"]
