@@ -13,6 +13,7 @@ with open(os.path.join(os.path.dirname(__file__), "conf.json")) as conf:
 
 token = params["token"]
 
+ME = None
 client = discord.Client()
 
 reboot_on_shutdown = 0
@@ -34,6 +35,12 @@ def on_ready():
 def on_message(msg):
     if msg.author == ME:
         return  # Altered should not respond to its own messages
+
+
+@client.event
+@asyncio.coroutine
+def on_reaction_add(reaction, user):
+    msg = reaction.message
 
 
 try:
